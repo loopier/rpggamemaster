@@ -1,6 +1,7 @@
 import sys
 import os
 from random import randint
+from rpgjournal import *
 
 def load(filename):
     with open(filename, "r") as file:
@@ -17,6 +18,7 @@ characteridentities = load("data/characteridentities.txt")
 characterdescriptors = load("data/characterdescriptors.txt")
 cthulhuoccupations = load("data/cthulhuoccupations.txt")
 cthulhuelements = load("data/cthulhuelements.txt")
+
 defaultroll = "1d100"
 
 def intInput(prompt="Enter a number\n"):
@@ -104,6 +106,12 @@ cmds = {
         "quit": do_quit,
         "exit": do_quit,
         "print": do_print,
+        "roll": do_roll,
+        "r": do_roll,
+        "help": do_printCommands,
+        "h": do_printCommands,
+
+        # mythic tables
         "actions": do_actions,
         "a": do_actions,
         "description": do_descriptors,
@@ -116,14 +124,12 @@ cmds = {
         "cst": do_specialelements,
         "characterdescription": do_characterdescriptors,
         "cd": do_characterdescriptors,
+
+        # cthulhu tables
         "cthulhuoccupations": do_cthulhuoccupations,
         "co": do_cthulhuoccupations,
         "cthulhuelements": do_cthulhuelements,
         "ce": do_cthulhuelements,
-        "roll": do_roll,
-        "r": do_roll,
-        "help": do_printCommands,
-        "h": do_printCommands,
 }
 
 def prompt():
